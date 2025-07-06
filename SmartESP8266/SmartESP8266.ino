@@ -1,86 +1,71 @@
+#include "SmartESP8266Utils.h"
 #include <ESP8266WiFi.h>
 #include <ESPAsyncWebServer.h>
-#include <ArduinoJson.h>
-#include "SmartESP8266Utils.h"
 
-const char* WIFI_SSID = "N1";
-const char* WIFI_PASSWORD = "yannyann";
-
+const char* ssid = "N1";
+const char* password = "yannyann";
+// ------ variable globale ----------
 AsyncWebServer server(80);
 String lastCommand = "";
-String statusMessage = "";
-String b = "true";
-String ia = "";
-int led = D1;
-
+AutoUpdatePayload payload;
 unsigned long lastUpdateTime = 0;
 const unsigned long updateInterval = 500;
 
+//------- declaration des pins --------
+
 void setup() {
   Serial.begin(115200);
-  connectToWiFi(WIFI_SSID, WIFI_PASSWORD);
+  connectToWiFi(ssid, password);
   setupWebSocket(server, &lastCommand);
-  pinMode(led, OUTPUT);
+  pinMode(D1, OUTPUT);
 }
 
 void loop() {
 
+
+
+
+
+
+
+
+   Smartcommande();
+   Autoupdate();
+ 
+}
+
+
+
+
+  void Smartcommande(){
   
-  handleWebSocketCommand();
-  if (millis() - lastUpdateTime > updateInterval) {
-    sendAutoUpdate();
+  if (!lastCommand.isEmpty()) {
+    if (lastCommand == "on") {
+      digitalWrite(D1, HIGH);
+      payload.bulb1 = "true";
+      payload.ia = "OK, j’ai allumé la LED";
+      payload.notif = "LED ON 💡";
+    } else if (lastCommand == "off") {
+      digitalWrite(D1, LOW);
+      payload.bulb1 = "false";
+      payload.ia = "LED éteinte";
+      payload.notif = "LED OFF ❌";
+    } else {
+      payload.ia = "false";
+      payload.notif = "false";
+    }
+
+    lastCommand = "";
+    sendAutoUpdate(payload);
+     payload.notif = "false";
+     payload.ia = "false";
+    
+  }
+}
+void Autoupdate(){
+   if (millis() - lastUpdateTime > updateInterval) {
+    payload.ecran1 = String(millis()); // mise à jour auto
+    sendAutoUpdate(payload);
     lastUpdateTime = millis();
   }
-}
-
-void handleWebSocketCommand() {
-  if (lastCommand.isEmpty()) return;
-
-  if (lastCommand == "allume") {
-    digitalWrite(led, HIGH);
-    b = "true";
-    ia = "OK c'est fait";
-    statusMessage = "LED ALLUMÉE";
-  } else if (lastCommand == "éteins") {
-    digitalWrite(led, LOW);
-    b = "false";
-    ia = "OK je viens de l'éteindre";
-    statusMessage = "LED ÉTEINTE";
-  } else {
-    statusMessage = "Commande inconnue";
-  }
-
-  lastCommand = "";
-  sendAutoUpdate();
-}
-
-void sendAutoUpdate() {
-  StaticJsonDocument<192> doc;
-  doc["Ecran1"] = millis();
-  doc["Ecran2"] = statusMessage;
-  doc["Ecran3"] = digitalRead(LED_BUILTIN) == HIGH ? "on" : "off";
-  doc["Ecran4"] = b;
-  doc["Indicateur1"] = 0.70;
-  doc["Indicateur2"] = 0.30;
-  doc["Indicateur3"] = 0.54;
-  doc["Bulb1"] = b;
-  doc["Bulb2"] = "false";
-  doc["Bulb3"] = "true";
-  doc["Bulb4"] = "false";
-  doc["notif"] = "false";
-  doc["AI"] = ia;
-  doc["status"] = "auto-update";
-  doc["message"] = statusMessage;
-  doc["Wifi"] = WiFi.SSID();
-  doc["ip_address"] = WiFi.localIP().toString();
-  doc["mac_address"] = WiFi.macAddress();
-  doc["signal_strength"] = WiFi.RSSI();
-  doc["gateway_ip"] = WiFi.gatewayIP().toString();
-  doc["free_memory"] = ESP.getFreeHeap();
-  doc["flash_memory"] = ESP.getFlashChipSize();
-
-  String payload;
-  serializeJson(doc, payload);
-  ws.textAll(payload);
-  Serial.println("🔄 Mise à jour automatique envoyée");
 }

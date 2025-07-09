@@ -62,7 +62,7 @@ Clique sur "Installer" pour esp8266 by ESP8266 Community
 
 
 
-5-   Une fois l'installation terminée branche ta cart et  verifie le com :
+5-   Une fois l'installation terminée branche ta cart et  verifie le com  et sélèctione le :
 
 
 
@@ -74,7 +74,9 @@ Clique sur "Installer" pour esp8266 by ESP8266 Community
 
 
 
-6 -   Selection  le com sur lequel tu voie ta cart apparaitre :
+6 -    Ensuite recherche et choisis ta carte selon ton modèle  , sélectionne ta carte ESP8266, par exemple :
+NodeMCU 1.0 (ESP-12E Module)
+
 
 
 

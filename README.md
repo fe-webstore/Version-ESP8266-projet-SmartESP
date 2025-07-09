@@ -95,10 +95,22 @@ ESPAsyncWebServer
 
 
 
+
+
 <img width="611" alt="image" src="https://github.com/user-attachments/assets/86557e98-285d-4eb6-b108-9fc5d5279b78" />
 
 
+ESPAsyncTCP
+
+
+
+
+<img width="587" alt="image" src="https://github.com/user-attachments/assets/72cf9247-49cc-4903-a439-68e02db97651" />
+
+
+
 ArduinoJson
+
 
 
 

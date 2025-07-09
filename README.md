@@ -14,12 +14,15 @@ Version optimisée pour ESP8266 du projet SmartESP. Très léger, facile à comp
 
 http://arduino.esp8266.com/stable/package_esp8266com_index.json
 
-4-Clique sur OK.
+      a - Dans Préférences
+      
+      <img width="741" alt="Capture d’écran 2025-07-09 210622" src="https://github.com/user-attachments/assets/44dc79c7-25e2-4c02-a6f2-d609088ace32" />
+
+      b -  colle cette URL   : http://arduino.esp8266.com/stable/package_esp8266com_index.json
+
+      <img width="746" alt="Capture d’écran 2025-07-09 210708" src="https://github.com/user-attachments/assets/1754488a-572b-4a18-a007-3d258776b159" />
+
+      c-   Clique sur OK.
 
 
-<img width="821" alt="Capture d’écran 2025-07-06 132218" src="https://github.com/user-attachments/assets/5441f76d-f4b3-49ea-91c5-172d660b7ddd" />
-
-5-
-
-<img width="222" alt="Capture d’écran 2025-07-06 133106" src="https://github.com/user-attachments/assets/5417a98d-2561-464b-9646-4488f5b160bf" />
 

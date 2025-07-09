@@ -88,15 +88,34 @@ NodeMCU 1.0 (ESP-12E Module)
 
 
 
+Résumé rapide des mots-clés à chercher dans le Library Manager :
+
+
+ESPAsyncWebServer
+
+
+
+<img width="611" alt="image" src="https://github.com/user-attachments/assets/86557e98-285d-4eb6-b108-9fc5d5279b78" />
+
+
+ArduinoJson
+
+
+
+<img width="646" alt="image" src="https://github.com/user-attachments/assets/e80a0a19-e14c-493b-b929-eebbdc8ac1a2" />
+
+
+
+
+
+
+
+
+
 
 
 ❗ Problèmes fréquents  sur  certain appareil :
 Si le port n’apparaît pas → installe le pilote CH340  en  ligne ou sur  le  site  de smart ESP
-
-
-
-
-
 
 
 <img width="728" alt="image" src="https://github.com/user-attachments/assets/62a67a7a-b813-49b2-ad73-6569f1df73dd" />

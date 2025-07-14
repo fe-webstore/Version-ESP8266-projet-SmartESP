@@ -43,15 +43,12 @@ void loop() {
     if (lastCommand == "on") {
       digitalWrite(D1, HIGH);
       payload.bulb1 = "true";
-      payload.ia = "OK, j’ai allumé la LED";
       payload.notif = "LED ON 💡";
     } else if (lastCommand == "off") {
       digitalWrite(D1, LOW);
       payload.bulb1 = "false";
-      payload.ia = "LED éteinte";
       payload.notif = "LED OFF ❌";
     } else {
-      payload.ia = "false";
       payload.notif = "false";
     }
 
